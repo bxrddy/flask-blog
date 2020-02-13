@@ -33,3 +33,4 @@ ehthumbs.db
 Thumbs.db
 
 __pycache__/*
+flaskblog/__pycache__/*
