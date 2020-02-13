@@ -1,2 +1,2 @@
-# flask-blog
-A blogging application developed using Flask.
+# Flask Blog 
+Will update the README.md soon!
