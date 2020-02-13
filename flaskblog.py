@@ -60,10 +60,18 @@ def register():
     return render_template('register.html', title = 'Register', form = form)
 
 
-@app.route("/login")
+@app.route("/login", methods = ['GET', 'POST'])
 def login():
 
     form = LoginForm()
+
+    if form.validate_on_submit():
+        if form.email.data == 'abc@gmail.com' and form.password.data == '123':
+            flash(f"You are now logged in!", "success")   # Used the Bootstrap 'success' class as a category for flash
+            return redirect(url_for('home'))
+        else:
+            flash(f"Login failed. Please check your credentials!", "danger")
+
     return render_template('login.html', title = 'Login', form = form)
 
 
