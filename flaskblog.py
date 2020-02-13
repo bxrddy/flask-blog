@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, flash, redirect
 from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
@@ -12,7 +12,6 @@ app = Flask(__name__)
                 secrets.token_hex(16)
 
        OUTPUT:  <RANDOM_STRING_OF_16_CHARACTERS_WILL_BE_YOUR_OUTPUT>
-
 '''
 app.config['SECRET_KEY'] = '774fe35b1314db2573faee216d9e6758'
 
@@ -53,6 +52,11 @@ def about():
 def register():
 
     form = RegistrationForm()
+
+    if form.validate_on_submit():
+        flash(f"Account created for {form.username.data}!", "success")   # Used the Bootstrap 'success' class as a category for flash
+        return redirect(url_for('home'))
+
     return render_template('register.html', title = 'Register', form = form)
 
 
