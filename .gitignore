@@ -1,5 +1,4 @@
 # Compiled source #
-
 *.com
 *.class
 *.dll
@@ -11,7 +10,6 @@
 # Packages #
 # it's better to unpack these files and commit the raw source
 # git has its own built in compression methods
-
 *.7z
 *.dmg
 *.gz
@@ -23,7 +21,6 @@
 
 
 # OS generated files #
-
 .DS_Store
 .DS_Store?
 ._*
@@ -32,5 +29,11 @@
 ehthumbs.db
 Thumbs.db
 
+
+# Cache files
 __pycache__/*
 flaskblog/__pycache__/*
+
+
+# Database files
+flaskblog/site.db
