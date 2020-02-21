@@ -216,3 +216,20 @@ def delete_post(post_id):
     flash('Your post has been deleted!', 'info')
 
     return redirect(url_for('home'))
+
+
+@app.route("/user/<string:username>")
+def user_posts(username):
+
+    # Get the page number from the URL. Default is set to first page
+    page    =  request.args.get('page', 1, type = int)
+
+    user    =  User.query.filter_by(username = username).first_or_404()
+
+    # Goes to that specific page and only displays five posts per page
+    posts   =  Post.query\
+                        .filter_by(author = user)\
+                        .order_by(Post.date_posted.desc())\
+                        .paginate(page = page, per_page = 5)
+
+    return render_template('user_posts.html', posts = posts, user = user) 
